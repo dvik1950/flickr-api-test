@@ -1,0 +1,21 @@
+<% require 'flickraw' %>
+
+<% FlickRaw.api_key = ENV['FLICKRAW_API_KEY'] %>
+<% FlickRaw.shared_secret = ENV['FLICKRAW_API_KEY'] %>
+
+<% flickr = FlickRaw::Flickr.new %>
+
+
+    <%= form_for :search, method: :get do |f| %>
+        <%= f.label :user_id, "Flickr user ID" %>
+        <%= f.text_field :user_id %>
+      <%= f.submit "SEARCH" %>
+    <% end %>
+
+
+  <% @pics.each do |pic| %>
+      <%= image_tag(pic.url_m) %>
+  <% end %>
+
+
+
